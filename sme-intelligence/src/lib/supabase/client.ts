@@ -1,0 +1,13 @@
+'use client';
+
+import { createBrowserClient } from '@supabase/ssr';
+
+// Safe to expose: the anon key only grants access allowed by Row Level
+// Security policies (see supabase/schema.sql). Never put the service-role
+// key here.
+export function createClient() {
+  return createBrowserClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+  );
+}
